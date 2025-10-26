@@ -1,2 +1,17 @@
+ -- Which movie has the highest average rating?
+SELECT 
+    m.title, 
+    AVG(r.rating) AS average_rating
+FROM 
+    ratings r
+JOIN 
+    movies m ON r.movieId = m.movieId
+GROUP BY 
+    m.movieId, m.title
+ORDER BY 
+    average_rating DESC
+LIMIT 1;
+
+
 title,average_rating
 "Father of the Bride Part II (1995)",5

@@ -1,2 +1,19 @@
+-- Who is the director with the most movies in this dataset?
+SELECT 
+    director,
+    COUNT(movieId) AS movie_count
+FROM 
+    movies
+WHERE 
+    -- Filter out movies where OMDb enrichment failed to return a director name
+    director IS NOT NULL AND director != 'N/A' 
+GROUP BY 
+    director
+ORDER BY 
+    movie_count DESC
+LIMIT 1;
+
+
+OUTPUT:
 director,movie_count
 "Martin Scorsese",3

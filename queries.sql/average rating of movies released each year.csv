@@ -1,3 +1,22 @@
+-- What is the average rating of movies released each year?
+SELECT 
+    m.release_year,
+    AVG(r.rating) AS average_rating
+FROM 
+    movies m
+JOIN 
+    ratings r ON m.movieId = r.movieId
+WHERE 
+    -- Filter out records where the year could not be determined or is the default 0
+    m.release_year > 0 
+GROUP BY 
+    m.release_year
+ORDER BY 
+    m.release_year ASC;
+
+
+
+OUTPUT:
 release_year,average_rating
 1977,5
 1992,3.5

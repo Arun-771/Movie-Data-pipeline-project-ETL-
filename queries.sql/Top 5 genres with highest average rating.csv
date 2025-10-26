@@ -1,3 +1,20 @@
+-- what are the top 5 movie genres that have the highest average rating?
+SELECT 
+    m.genres AS genre_combination,
+    AVG(r.rating) AS average_rating
+FROM 
+    ratings r
+JOIN 
+    movies m ON r.movieId = m.movieId
+GROUP BY 
+    genre_combination
+HAVING
+    genre_combination IS NOT NULL AND genre_combination != '(no genres listed)'
+ORDER BY 
+    average_rating DESC
+LIMIT 5;
+
+OUTPUT:
 genre_combination,average_rating
 Crime|Drama|Horror|Mystery|Thriller,5
 Action|Adventure|Drama,5
