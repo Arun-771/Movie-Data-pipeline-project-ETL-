@@ -1,5 +1,5 @@
 Movie Data Analysis ETL Pipeline
-1. Overview of the Solution
+1.Overview of the Solution
 This project implements a complete Extract, Transform, Load (ETL) pipeline designed to ingest raw movie and rating data from the MovieLens dataset,
 enrich it with detailed movie metadata from the OMDb API, and store the final, cleaned data in a MySQL relational database (movies_db)
 for subsequent analytical querying.
@@ -19,6 +19,7 @@ Project Deliverables
 VScode,mysql,
 git clone https://github.com/Arun-771/Movie-Data-pipeline-project
 cd Movie-Data-pipeline-project-ETL
+
 """ python libraries used in etl
 import pandas as pd
 import requests
@@ -38,9 +39,10 @@ into the API loop to strictly adhere to OMDb's rate limits. Data type integrity 
 Finally, a bonus feature was added by engineering a decade column from the release year, 
 providing a valuable dimension for temporal analysis within the MySQL database.
 
-Challenges and SolutionsThis ETL project faced three primary technical hurdles. 
+5.Challenges and Solutions
+This ETL project faced three primary technical hurdles. 
 The most critical was managing the OMDb API rate limits, which was solved by implementing a time.sleep(1) delay before each request 
 to ensure the \approx 1,000 calls completed successfully. 
 Next, a persistent Foreign Key error was fixed by reversing the table load order in etl.py (loading ratings before movies) to resolve database constraints. 
-Finally, accurately analyzing average ratings required handling the pipe-separated genre string; 
-for submission, the simple grouping method was used, though the need for more complex SQL string-splitting logic was acknowledged for truly accurate individual genre analysis.
+Finally, accurately analyzing average ratings required handling the pipe-separated genre string;for submission,the simple grouping method was used, 
+though the need for more complex SQL string-splitting logic was acknowledged for truly accurate individual genre analysis.
