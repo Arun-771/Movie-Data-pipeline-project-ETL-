@@ -30,7 +30,7 @@ import re
 from urllib.parse import quote
 """"
 
-4.ETL design
+4.ETL design:
 The ETL pipeline was built with a focus on robust data quality and efficient database loading. 
 A key design choice was using aggressive title cleaning via 
 Python's Regular Expressions to normalize MovieLens titles (e.g., removing aliases and reversing articles like 'Title, The'), 
@@ -39,7 +39,7 @@ into the API loop to strictly adhere to OMDb's rate limits. Data type integrity 
 Finally, a bonus feature was added by engineering a decade column from the release year, 
 providing a valuable dimension for temporal analysis within the MySQL database.
 
-5.Challenges and Solutions
+5.Challenges and Solutions:
 This ETL project faced three primary technical hurdles. 
 The most critical was managing the OMDb API rate limits, which was solved by implementing a time.sleep(1) delay before each request 
 to ensure the \approx 1,000 calls completed successfully. 
