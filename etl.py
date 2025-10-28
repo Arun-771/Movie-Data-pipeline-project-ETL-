@@ -37,14 +37,14 @@ def connect_db(db_url):
     try:
         engine = create_engine(db_url)
         with engine.connect():
-            print("🟢 Successfully connected to the MySQL database.")
+            print(" Successfully connected to the MySQL database.")
         return engine
     except OperationalError as e:
-        print(f"🔴 FATAL ERROR connecting to MySQL: {e}")
+        print(f" FATAL ERROR connecting to MySQL: {e}")
         print("   -> Please ensure MySQL server is running and database 'movies_db' exists.")
         exit(1)
     except Exception as e:
-        print(f"🔴 An unexpected error occurred during DB connection: {e}")
+        print(f" An unexpected error occurred during DB connection: {e}")
         exit(1)
 
 
@@ -117,13 +117,13 @@ def run_etl(engine):
     try:
         movies_df = pd.read_csv('movies.csv')
         ratings_df = pd.read_csv('ratings.csv')
-        print("🟢 CSV files loaded successfully.")
+        print(" CSV files loaded successfully.")
     except FileNotFoundError:
-        print("🔴 ERROR: movies.csv or ratings.csv not found.")
+        print(" ERROR: movies.csv or ratings.csv not found.")
         return
 
     # Enrichment and Transformation
-    print("🎬 Starting OMDb enrichment and transformation...")
+    print(" Starting OMDb enrichment and transformation...")
 
     # Initialize new columns
     movies_df['director'] = None
@@ -162,7 +162,7 @@ def run_etl(engine):
         if (index + 1) % 500 == 0:
             print(f"   -> Processed {index + 1} movies...")
 
-    print("🟢 OMDb enrichment and transformation complete.")
+    print(" OMDb enrichment and transformation complete.")
 
     # Final Data Type Cleanup
     movies_df['box_office'] = movies_df['box_office'].fillna(0).astype('int64')
@@ -191,7 +191,7 @@ def run_etl(engine):
         index=False
     )
 
-    print("🟢 ETL pipeline finished successfully!")
+    print(" ETL pipeline finished successfully!")
     print("---")
 
 
