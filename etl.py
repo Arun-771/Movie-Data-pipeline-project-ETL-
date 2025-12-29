@@ -8,7 +8,7 @@ from urllib.parse import quote
 
 
 API_KEY = "293e033e" 
-MYSQL_PASSWORD = "Aras1229#" 
+MYSQL_PASSWORD = "######" 
 DATABASE_URL = f"mysql+pymysql://root:{MYSQL_PASSWORD}@localhost/movies_db"
 
 
